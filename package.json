@@ -1,0 +1,11 @@
+{
+  "name": "ted-os",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TEDvisory operating system on top of Zoho CRM",
+  "scripts": {
+    "dev": "npm --prefix apps/dashboard run dev",
+    "build": "npm --prefix apps/dashboard run build",
+    "lint": "npm --prefix apps/dashboard run lint"
+  }
+}

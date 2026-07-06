@@ -31,6 +31,8 @@ This document defines the operating rules TED OS must follow.
 4. Applications are grouped under the student.
 5. Closed Lost applications contribute zero commission.
 6. Closed Won applications enter the Director Product Approval Queue.
+7. The Zoho field `Expected_Revenue` must not be used for TED OS commission or finance calculations.
+8. `Expected_Revenue` is treated as a Zoho CRM / Zoho Analytics forecasting field only.
 
 ## Product / Commission Rules
 
@@ -40,28 +42,32 @@ This document defines the operating rules TED OS must follow.
 4. Products represent confirmed commission records.
 5. Products should not be assumed to exist for open applications.
 6. Finance is Director-only.
+7. Products are the source of truth for confirmed commission.
 
 ## Revenue Rules
 
 1. Revenue in TED OS means TEDvisory commission income.
 2. Revenue does not mean student tuition fee.
-3. Tuition Fee is an input for estimation.
-4. Forecast Commission comes from open applications/deals.
-5. Confirmed Commission comes from Products.
-6. Commission Received should be tracked separately from Confirmed Commission.
-7. Outstanding Commission = Confirmed Commission - Received Commission.
+3. Revenue does not mean Zoho `Expected_Revenue`.
+4. Tuition Fee is an input for estimation only.
+5. Forecast Commission comes from open applications/deals plus TEDvisory commission rules.
+6. Confirmed Commission comes from Products.
+7. Commission Received should be tracked separately from Confirmed Commission.
+8. Outstanding Commission = Confirmed Commission - Received Commission.
 
 ## Forecast Commission Rules
 
 For open applications:
 
 ```text
-Forecast Commission = Tuition Fee × Estimated Commission Rate
+Forecast Commission = Tuition Fee × Configured Commission Rate
 ```
 
-If a confirmed expected commission field exists on the application, use that field first.
+Forecast Commission must not use Zoho `Expected_Revenue`.
 
-If commission rate is unknown, TED OS may use a default estimate but must label it as estimated.
+If a university or partner commission rate is not configured, TED OS should show forecast commission as `Unknown`.
+
+If TED OS uses a fallback estimate in any future version, the UI must label it clearly as `Estimated`.
 
 ## Confirmed Commission Rules
 
